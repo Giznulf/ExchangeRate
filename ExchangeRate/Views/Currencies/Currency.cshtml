@@ -1,0 +1,43 @@
+﻿@using ExchangeRate.Models
+
+@model Valute
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Валюты</title>
+    <meta charset="utf-8" />
+    <style>
+        .valutes{
+            display: inline-flex;
+            color: blue;
+        }
+        table {
+            border: 1px solid grey;
+            margin-right: 10px;
+
+        }
+        tr, td, th{
+            border: 1px solid grey;
+            background-color: rgba(0, 100, 20, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="valutes">
+        @{
+           <table>
+                <tr><th>Name</th> <th>@Model.Name</th></tr>
+
+                <tr><td>ID</td> <td>@Model.ID</td></tr>
+                <tr><td>NumCode</td><td>@Model.NumCode</td></tr>
+                <tr><td>CharCode</td><td>@Model.CharCode</td></tr>
+                <tr><td>Nominal</td><td>@Model.Nominal</td></tr>
+                <tr><td>Value</td><td>@Model.Value</td></tr>
+                <tr><td>Previous</td><td>@Model.Previous</td></tr>
+           </table>
+
+        }
+    </div>
+</body>
+</html>

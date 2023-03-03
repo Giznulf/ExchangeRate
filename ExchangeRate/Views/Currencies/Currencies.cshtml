@@ -1,0 +1,59 @@
+﻿@using ExchangeRate.Models
+
+@model X.PagedList.IPagedList<ExchangeRate.Models.Valute>
+@using X.PagedList.Mvc.Core
+
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Валюты</title>
+    <meta charset="utf-8" />
+    <style>
+        .valutes{
+            display: inline-flex;
+            color: blue;
+        }
+        table {
+            border: 1px solid grey;
+            margin-right: 10px;
+
+        }
+        tr, td, th{
+            border: 1px solid grey;
+            background-color: rgba(0, 100, 20, 0.3);
+        }
+    </style>
+</head>
+<body>
+	<div class="valutes">
+    @{
+        Valute[] valutes = Model.ToArray();
+
+        int i = 0;
+       
+        while (i < valutes.Length)
+        {
+            <table>
+            <tr><th>Name</th> <th>@valutes[i].Name</th></tr>
+
+            <tr><td>ID</td> <td>@valutes[i].ID</td></tr>
+            <tr><td>NumCode</td><td>@valutes[i].NumCode</td></tr>
+            <tr><td>CharCode</td><td>@valutes[i].CharCode</td></tr>
+            <tr><td>Nominal</td><td>@valutes[i].Nominal</td></tr>
+            <tr><td>Value</td><td>@valutes[i].Value</td></tr>
+            <tr><td>Previous</td><td>@valutes[i].Previous</td></tr>
+            </table>
+
+            i++;
+        }
+    }
+	</div>
+	<div>
+        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+		@Html.PagedListPager(Model, page => Url.Action("Currencies",  new { page }))
+	</div>
+</body>
+</html>
+
+
